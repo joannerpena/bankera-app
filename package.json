@@ -3,8 +3,14 @@
   "version": "0.1.0",
   "description": "MAC272 Final Project",
   "main": "server.js",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "scripts": {
-    "test": "node server.js",
+    "test": "jest",
     "start": "node server.js"
   },
   "repository": {
@@ -19,5 +25,8 @@
   "homepage": "https://github.com/joannerpena/bankera-app#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1"
   }
 }
