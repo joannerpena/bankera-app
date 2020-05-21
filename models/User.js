@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const dateformat = require('dateformat');
+
+const dateNow = new Date();
 
 const UserSchema = new mongoose.Schema({
     first_name: {
@@ -79,7 +82,7 @@ const UserSchema = new mongoose.Schema({
     },
     filled_date: {
         type: Date,
-        default: Date.now
+        default: dateNow
     }
 });
 
