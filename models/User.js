@@ -4,6 +4,10 @@ const dateformat = require('dateformat');
 const dateNow = new Date();
 
 const UserSchema = new mongoose.Schema({
+    account_number: {
+        type: String,
+        required: true
+    },
     first_name: {
         type: String,
         required: true

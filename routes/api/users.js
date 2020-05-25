@@ -11,6 +11,11 @@ let dateNow = new Date();
 // @desc    Register User
 // @access  Public
 router.post('/', [
+    check('account_number', 'Problem generation Account Number.')
+        .not()
+        .isEmpty()
+        .isDecimal()
+        .isLength({ min:  17, max: 17}),
     check('first_name','First name is required.')
         .not()
         .isEmpty(),
@@ -27,7 +32,7 @@ router.post('/', [
     check('ssn','Please introduce your Social Security Number.')
         .not()
         .isEmpty()
-        .isLength({ min: 10 }),
+        .isLength({ min: 4, max: 4 }),
     check('user_name','Please introduce a username.')
         .not()
         .isEmpty(),
@@ -47,7 +52,7 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { first_name, last_name, account_type, birth_date, address1, 
+    const { account_number, first_name, last_name, account_type, birth_date, address1, 
             address2, city, state, zipcode, us_citizenship, ssn, driver_license, 
             license_dueDate, cardColor, user_name, password, email, phone_number,
             phone_optional, avatar, filled_date } = req.body;
@@ -57,7 +62,7 @@ router.post('/', [
         let user = await User.findOne({ email });
 
         if(user){
-            res.status(400).json({ errors: [{ msg: 'Email already registered with another account' }] });
+            return res.status(400).json({ errors: [{ msg: 'Email already registered with another account' }] });
         }
 
         // Get user avatar
@@ -69,6 +74,7 @@ router.post('/', [
         
         // Create new user
         user = new User({
+            account_number,
             first_name,
             last_name,
             account_type,
