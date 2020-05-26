@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
+
 const router = express.Router();
 
 let dateNow = new Date();
@@ -11,11 +12,6 @@ let dateNow = new Date();
 // @desc    Register User
 // @access  Public
 router.post('/', [
-    check('account_number', 'Problem generation Account Number.')
-        .not()
-        .isEmpty()
-        .isDecimal()
-        .isLength({ min:  17, max: 17}),
     check('first_name','First name is required.')
         .not()
         .isEmpty(),

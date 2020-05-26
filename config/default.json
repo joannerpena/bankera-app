@@ -1,3 +1,3 @@
 {
-    "mongoURI": "mongodb+srv://bankera-user:bankera123@bankera-app-sxpqx.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb://bankeraUser:bankera123@bankeraapp-shard-00-00-sxpqx.mongodb.net:27017,bankeraapp-shard-00-01-sxpqx.mongodb.net:27017,bankeraapp-shard-00-02-sxpqx.mongodb.net:27017/test?ssl=true&replicaSet=bankeraApp-shard-0&authSource=admin&retryWrites=true&w=majority"
 }

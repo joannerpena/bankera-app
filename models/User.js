@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
-const dateformat = require('dateformat');
+const accountGenerator = require('../utils/accountgenerator');
 
 const dateNow = new Date();
+const accountNumber = accountGenerator();
 
 const UserSchema = new mongoose.Schema({
     account_number: {
         type: String,
-        required: true
+        default: accountNumber
     },
     first_name: {
         type: String,
