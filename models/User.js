@@ -7,7 +7,8 @@ const accountNumber = accountGenerator();
 const UserSchema = new mongoose.Schema({
     account_number: {
         type: String,
-        default: accountNumber
+        default: accountNumber,
+        unique: true
     },
     first_name: {
         type: String,
