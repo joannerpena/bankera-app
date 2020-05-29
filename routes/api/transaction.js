@@ -58,6 +58,17 @@ router.post(
 // @route   GET api/transaction
 // @desc    Get All Transaction
 // @access  Private
-router.get('/', auth, async (req, res) => {});
+router.get('/', auth, async (req, res) => {
+  try {
+    const transactions = await Transaction.find({ user: req.user.id }).sort({
+      transaction_date: -1,
+    });
+
+    res.json(transactions);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error!');
+  }
+});
 
 module.exports = router;
