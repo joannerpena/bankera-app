@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const dateNow = new Date.now();
+const dateNow = new Date();
 
 const TransactionSchema = new Schema({
   user: {
@@ -16,15 +16,12 @@ const TransactionSchema = new Schema({
     type: Number,
     required: true,
   },
-  transaction_status: {
-    type: String,
-  },
   transaction_type: {
     type: String,
   },
   transaction_date: {
     type: Date,
-    Default: dateNow,
+    default: dateNow,
   },
 });
 

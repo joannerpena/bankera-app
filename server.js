@@ -22,5 +22,6 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/account', require('./routes/api/account'));
 app.use('/api/transfer', require('./routes/api/transfer'));
+app.use('/api/transaction', require('./routes/api/transaction'));
 
 app.listen(port, () => console.log(`Server running!`));

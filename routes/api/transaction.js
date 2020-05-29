@@ -1,41 +1,63 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
-const gravatar = require('gravatar');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const config = require('config');
-const Transaction = require('../../models/Transaction');
+const auth = require('../../middleware/auth');
 
 const router = express.Router();
 
-let dateNow = new Date();
+const Transaction = require('../../models/Transaction');
+const Account = require('../../models/Account');
+const User = require('../../models/User');
 
 // @route   POST api/transaction
-// @desc    Transaction route
-// @access  Public
-router.post('/', [
-    check('transaction_title','A title for transaction is required.')
-        .not()
-        .isEmpty(),
-    check('transaction_amount','Amount is required.')
+// @desc    Create Transaction
+// @access  Private
+router.post(
+  '/',
+  [
+    auth,
+    [
+      check('transaction_title', 'Title is required.').not().isEmpty(),
+      check('transaction_amount', 'Amount is required.')
         .not()
         .isEmpty()
-        .isDecimal()
-], async (req,res) => {
+        .isDecimal(),
+    ],
+  ],
+  async (req, res) => {
     const errors = validationResult(req);
 
-    if(!errors.isEmpty()){
-        return res.status(400).json({ errors: errors.array() });
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
     }
 
-    const { transaction_title, transaction_amount, transaction_status, transaction_type } = req.body;
+    const {
+      transaction_title,
+      transaction_amount,
+      transaction_type,
+    } = req.body;
+
+    const newTransaction = {};
+
+    newTransaction.user = req.user.id;
+    newTransaction.transaction_title = req.body.transaction_title;
+    newTransaction.transaction_amount = req.body.transaction_amount;
+    newTransaction.transaction_type = req.body.transaction_type;
 
     try {
-        
+      const transaction = new Transaction(newTransaction);
+
+      await transaction.save();
+      res.json(transaction);
     } catch (error) {
-        
+      console.error(error.message);
+      res.status(500).send('Server Error!');
     }
+  }
+);
 
-});
+// @route   GET api/transaction
+// @desc    Get All Transaction
+// @access  Private
+router.get('/', auth, async (req, res) => {});
 
-module.exports = router
+module.exports = router;
