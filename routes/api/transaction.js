@@ -71,4 +71,30 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+// @route   DELETE api/transaction/:id
+// @desc    Delete a Transaction
+// @access  Private
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const transaction = await Transaction.findById(req.params.id);
+
+    if (!transaction) {
+      return res.status(404).json({ msg: 'Transaction not found' });
+    }
+
+    if (transaction.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized' });
+    }
+
+    await transaction.remove();
+    res.json({ msg: 'Transaction removed' });
+  } catch (error) {
+    console.error(error.message);
+    if (error.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Transaction not found' });
+    }
+    res.status(500).send('Server Error!');
+  }
+});
+
 module.exports = router;
