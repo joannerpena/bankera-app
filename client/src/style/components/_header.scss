@@ -1,13 +1,16 @@
 // Header
 
-// @Imports
-@import '../base/colors';
-
 // Logo
-.brand-logo {
-  width: 170px;
-}
+.header-navbar {
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-bottom: 2em;
 
-.nav-button {
-  background-color: $dark-color;
+  .brand-logo {
+    width: 170px;
+  }
+
+  .nav-button {
+    background-color: $dark-color;
+  }
 }

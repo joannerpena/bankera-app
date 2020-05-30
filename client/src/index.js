@@ -8,11 +8,13 @@ import './style/main.scss';
 
 // COMPONENTS
 import Header from './components/header';
+import ImageContainer from './components/image-container';
 
 const App = () => {
   return (
     <Container className="page-margin" fluid>
       <Header />
+      <ImageContainer />
     </Container>
   );
 };

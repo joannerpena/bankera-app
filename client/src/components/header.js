@@ -7,7 +7,7 @@ import Logo from '../assets/img/bankera-logo.svg';
 class Header extends Component {
   render() {
     return (
-      <Navbar expand="lg">
+      <Navbar className="header-navbar" expand="lg">
         <Navbar.Brand href="#home">
           <img
             src={Logo}
