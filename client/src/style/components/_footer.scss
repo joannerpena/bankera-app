@@ -1,0 +1,39 @@
+// Footer
+.footer {
+  margin-bottom: auto;
+  padding: 2em 4em 2em 4em;
+  background-color: $dark-color;
+
+  img {
+    width: 10em;
+    margin-bottom: 2em;
+  }
+
+  a {
+    font-weight: 100;
+    color: $light-color;
+    margin-bottom: 1em;
+  }
+
+  .copyright-text {
+    padding-left: 1em;
+    margin-top: 2em;
+    color: $light-color;
+    font-weight: 100;
+    font-size: 0.9em;
+  }
+
+  .menu-footer {
+    padding-top: 1.2em;
+
+    h5 {
+      font-weight: bold;
+      color: $light-color;
+      margin-bottom: 1em;
+    }
+
+    a {
+      margin-bottom: 0.7em;
+    }
+  }
+}
