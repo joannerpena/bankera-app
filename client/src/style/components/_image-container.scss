@@ -2,6 +2,7 @@
 .image-container {
   background-image: url('../../assets/img/front-image.png');
   padding: 10em 5em 10em 5em;
+  margin-bottom: 4em;
 
   h1 {
     color: $light-color;
@@ -20,7 +21,7 @@
     margin-right: 0.5em;
     padding: 0.5em 2em 0.5em 2em;
     font-weight: bold;
-    color: $dark-color;
+    color: $first-color;
   }
 
   .btn-outline-light {
@@ -28,7 +29,7 @@
     color: $light-color;
 
     &:hover {
-      color: $dark-color;
+      color: $first-color;
     }
   }
 

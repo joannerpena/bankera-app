@@ -17,7 +17,7 @@ class Header extends Component {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto">
+          <Nav className="ml-auto nav-list">
             <Nav.Link href="#">Personal</Nav.Link>
             <Nav.Link className="ml-3" href="#">
               Business
