@@ -1,0 +1,13 @@
+import React, { Component } from 'react';
+
+class Header extends Component{
+    render(){
+        return(
+            <header>
+                Hello
+            </header>
+        )
+    }
+}
+
+export default Header
