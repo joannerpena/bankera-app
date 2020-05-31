@@ -1,0 +1,33 @@
+// Card Personal Info
+.card-personal-section {
+  padding: 5em 10em 5em 10em;
+  margin-bottom: 4em;
+
+  img {
+    width: 100%;
+  }
+
+  h2 {
+    font-weight: bold;
+    font-size: 2.5em;
+    color: $first-color;
+  }
+
+  p {
+    font-size: 1.7em;
+    font-weight: 100;
+    color: $dark-color;
+    margin-bottom: 1em;
+  }
+
+  button {
+    background-color: $dark-color;
+    color: $light-color;
+    font-weight: bold;
+    padding: 0.5em 2em 0.5em 2em;
+  }
+
+  .card-section-info {
+    padding: 0em 1em 1em 4em;
+  }
+}

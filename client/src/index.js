@@ -7,9 +7,10 @@ import './style/main.scss';
 
 // COMPONENTS
 import Home from './views/home';
+import PersonalPage from './views/personal';
 
 const App = () => {
-  return <Home />;
+  return <PersonalPage />;
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
