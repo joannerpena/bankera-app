@@ -5,6 +5,7 @@ import { Container } from 'react-bootstrap';
 import Header from '../components/header';
 import ImageFluid from '../components/image-fluid';
 import CardPersonal from '../components/card-personal-info';
+import PersonalAccountInfo from '../components/personal-account-info';
 import Footer from '../components/footer';
 
 const Home = () => {
@@ -14,8 +15,9 @@ const Home = () => {
         <Header />
       </Container>
       <ImageFluid />
-      <Container fluid>
+      <Container className="page-margin" fluid>
         <CardPersonal />
+        <PersonalAccountInfo />
       </Container>
       <Footer />
     </div>

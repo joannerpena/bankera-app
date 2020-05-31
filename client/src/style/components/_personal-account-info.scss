@@ -1,0 +1,58 @@
+// Personal Account Info
+.account-info {
+  padding: 3em;
+  margin-bottom: 4em;
+
+  button {
+    background-color: $dark-color;
+    color: $light-color;
+    font-weight: bold;
+    padding: 0.5em 2em 0.5em 2em;
+  }
+
+  .inner-light-jumbotron {
+    background-color: $light-color;
+    padding: 1em 1em 1em 1em;
+
+    h3 {
+      font-size: 2.2em;
+      color: $extra-dark-color;
+      padding: 0.5em;
+    }
+
+    h4 {
+      font-size: 2em;
+      font-weight: bold;
+      margin-bottom: 1em;
+      color: $extra-dark-color;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin-bottom: 1.5em;
+      color: $dark-color;
+    }
+
+    .jumbotron-undertitle-line {
+      border: 0.01em solid $dark-color;
+    }
+
+    .jumbotron-col1 {
+      padding: 0.5em 0em 5em 2em;
+    }
+
+    .jumbotron-col2 {
+      padding: 0.5em 0em 5em 0em;
+    }
+
+    .vl {
+      border-left: 0.1em solid $dark-color;
+      height: 25em;
+    }
+  }
+}
+
+.jumbotron-top-line {
+  border: 1em solid $dark-color;
+  margin: 0;
+}
