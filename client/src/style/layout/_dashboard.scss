@@ -9,4 +9,11 @@
 .dashboard {
   height: 100%;
   background-color: $second-color;
+
+  footer {
+    background-color: $extra-dark-color;
+    padding: 1em;
+    margin-top: 8.2em;
+    color: $second-color;
+  }
 }
