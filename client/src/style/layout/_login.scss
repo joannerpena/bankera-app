@@ -59,6 +59,13 @@
       .form-control {
         margin-bottom: 2em;
       }
+
+      .createAccount-link{
+        margin-top: .2em;
+        font-size: 1.2em;
+        text-decoration: underline;
+        color: $dark-color;
+      }
     }
   }
 }

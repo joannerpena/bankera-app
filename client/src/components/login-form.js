@@ -25,6 +25,11 @@ const LoginForm = () => {
               Login
             </Button>
           </Form>
+          <Row>
+            <Col>
+              <a href="#" className="createAccount-link d-flex justify-content-center">I don’t have an account</a>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Jumbotron>
