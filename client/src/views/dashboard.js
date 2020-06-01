@@ -4,6 +4,8 @@ import { Container } from 'react-bootstrap';
 // Components
 import DashboardHeader from '../components/dashboard-header';
 import AccountWidget from '../components/account-info-dashboard';
+import TransactionList from '../components/transaction-list';
+import DashboardFooter from '../components/dashboard-footer';
 
 const Dashboard = () => {
   return (
@@ -13,6 +15,10 @@ const Dashboard = () => {
       </Container>
       <Container className="page-margin" fluid>
         <AccountWidget />
+        <TransactionList />
+      </Container>
+      <Container className="no-padding" fluid>
+        <DashboardFooter />
       </Container>
     </div>
   );
