@@ -2,3 +2,10 @@
 
 // @imports
 @import '../components/dashboard-header';
+@import '../components/account-widget';
+
+// Rules
+.dashboard {
+  height: 100%;
+  background-color: $second-color;
+}

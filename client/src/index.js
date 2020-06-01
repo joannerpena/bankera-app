@@ -8,11 +8,11 @@ import './style/main.scss';
 // COMPONENTS
 // import Home from './views/home';
 // import PersonalPage from './views/personal';
-import LogIn from './views/login';
-// import Dashboard from './views/dashboard';
+// import LogIn from './views/login';
+import Dashboard from './views/dashboard';
 
 const App = () => {
-  return <LogIn />;
+  return <Dashboard />;
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
