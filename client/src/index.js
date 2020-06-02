@@ -12,10 +12,11 @@ import './style/main.scss';
 // import RegisterPage from './views/register';
 // import Dashboard from './views/dashboard';
 // import NewAccountSelection from './views/new-account-selection';
-import AccountRegistrationForm from './views/account-registration';
+// import AccountRegistrationForm from './views/account-registration';
+import Setting from './views/settings';
 
 const App = () => {
-  return <AccountRegistrationForm />;
+  return <Setting />;
 };
 
 ReactDOM.render(<App />, document.getElementById('root'));
