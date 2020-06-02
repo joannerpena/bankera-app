@@ -1,0 +1,53 @@
+// Account Type Selection
+.new-account-selection {
+  border: 0.02em solid $dark-color;
+  border-radius: 0;
+  margin-bottom: 4em;
+
+  .new-account-image {
+    background-image: url('../../assets/img/new-account.png');
+    background-position: center;
+    background-size: cover;
+    border-radius: 0;
+    margin-bottom: 0;
+
+    h1 {
+      font-weight: bold;
+      font-size: 5em;
+      padding: 2em;
+      color: $light-color;
+    }
+  }
+
+  .card-body {
+    border-radius: 0em;
+    padding: 2em 3em;
+
+    h4 {
+      color: $dark-color;
+      font-weight: 500;
+      font-size: 1.5em;
+    }
+
+    p {
+      font-weight: normal;
+      font-size: 0.8em;
+    }
+
+    button {
+      background-color: $dark-color;
+      border: 0;
+      font-weight: bold;
+      padding: 0em 2em 0em 2em;
+    }
+
+    .account-button {
+      padding: 0.7em;
+    }
+
+    .card-text {
+      font-size: 1em;
+      color: $dark-color;
+    }
+  }
+}
