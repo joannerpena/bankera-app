@@ -1,0 +1,64 @@
+// Account Registration
+.account-registration {
+  background-color: $second-color;
+  padding: 3em 7em;
+
+  .account-form {
+    background-color: $light-color;
+    padding: 4em 5em;
+
+    label,
+    h3,
+    h5 {
+      color: $dark-color;
+    }
+
+    h3 {
+      font-size: 1.5em;
+    }
+
+    img {
+      margin-bottom: 0.5em;
+    }
+    a {
+      color: $dark-color;
+      text-decoration: underline;
+      margin-bottom: 2em;
+    }
+
+    .card-select-title {
+      margin-top: 1.5em;
+      margin-bottom: 2em;
+    }
+
+    .card-select {
+      margin-bottom: 2em;
+    }
+
+    .term-of-use {
+      overflow-y: scroll;
+      margin-top: 2em;
+
+      h5 {
+        font-weight: 500;
+        font-size: 1em;
+        text-decoration: underline;
+      }
+
+      embed {
+        width: 78em;
+        height: 40em;
+      }
+    }
+
+    .registration-submit {
+      margin-top: 2em;
+
+      button {
+        padding: 0.5em 3.5em;
+        font-weight: bold;
+        background-color: $dark-color;
+      }
+    }
+  }
+}
