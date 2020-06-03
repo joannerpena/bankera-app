@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 
 // @import Assets
@@ -20,9 +21,9 @@ const CardInfoSection = () => {
             As a new Bankera customer, when you open a Bankera Essential
             Checking account with qualifying activities.
           </p>
-          <Button variant="dark" size="lg">
+          <Link className="btn btn-dark btn-lg" to="/register">
             Apply Now
-          </Button>
+          </Link>
         </Col>
       </Row>
     </div>

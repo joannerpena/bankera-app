@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Jumbotron, Container } from 'react-bootstrap';
 
 // @import Assets
-import LightLogo from '../assets/img/bankera-light-logo.svg';
+import LightLogo from '../../assets/img/bankera-light-logo.svg';
 const Footer = () => {
   return (
     <Jumbotron className="footer" fluid>

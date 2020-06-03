@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 
 // @import Assets
@@ -17,9 +18,9 @@ const CardInfoSection = () => {
             Unlimited check writing, $0 minimum opening deposit required & over
             60,000 fee-free ATMs in the US.
           </p>
-          <Button variant="dark" size="lg">
+          <Link className="btn btn-dark btn-lg" to="/register">
             Apply Now
-          </Button>
+          </Link>
         </Col>
       </Row>
     </div>

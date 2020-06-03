@@ -7,7 +7,7 @@
     width: 100%;
   }
 
-  small{
+  small {
     color: $dark-color;
   }
 
@@ -22,7 +22,7 @@
 
     .login-form {
       background-color: $light-color;
-      margin: 11em;
+      margin: 11em 11em 9em 11em;
       padding: 3em;
 
       p {
@@ -60,8 +60,8 @@
         margin-bottom: 2em;
       }
 
-      .createAccount-link{
-        margin-top: .2em;
+      .createAccount-link {
+        margin-top: 0.2em;
         font-size: 1.2em;
         text-decoration: underline;
         color: $dark-color;

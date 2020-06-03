@@ -2,11 +2,11 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 
 // Components
-import Header from '../components/header';
+import Header from '../components/layout/header';
 import ImageContainer from '../components/image-container';
 import CardInfoSection from '../components/card-info-section';
 import HomeJumbotronBottom from '../components/home-jumbotron-bottom';
-import Footer from '../components/footer';
+import Footer from '../components/layout/footer';
 
 const Home = () => {
   return (

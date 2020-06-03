@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import pkg from '../../package.json';
 import config from '../config/default.json';
 
 // @import Assets
 import LightLogo from '../assets/img/bankera-light-logo.svg';
-import RegistrationForm from '../components/registration-form';
+import RegistrationForm from '../components/auth/registration-form';
 
 // @import components
 
@@ -14,7 +15,9 @@ const RegisterPage = () => {
     <Container className="login-page" fluid>
       <Row>
         <Col className="left-banner" lg={5}>
-          <img src={LightLogo} alt="Bankera Light Logo" />
+          <Link to="/">
+            <img src={LightLogo} alt="Bankera Light Logo" />
+          </Link>
         </Col>
         <Col className="right-banner" lg={7}>
           <RegistrationForm />

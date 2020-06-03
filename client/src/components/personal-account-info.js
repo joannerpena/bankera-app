@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Jumbotron, Button } from 'react-bootstrap';
 
 const PersonalAccountInfo = () => {
@@ -35,9 +36,9 @@ const PersonalAccountInfo = () => {
       </Jumbotron>
       <Row>
         <Col className="d-flex justify-content-center">
-          <Button variant="dark" size="lg">
+          <Link className="btn btn-dark btn-lg" to="/register">
             Apply Now
-          </Button>
+          </Link>
         </Col>
       </Row>
     </Jumbotron>

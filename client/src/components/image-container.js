@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Jumbotron, Button, Row, Col } from 'react-bootstrap';
 
 // @import Assets
@@ -16,12 +17,12 @@ const ImageContainer = () => {
           </p>
           <Row>
             <Col>
-              <Button variant="light" size="lg">
+              <Link className="btn btn-light btn-lg" to="/personal">
                 Learn More
-              </Button>
-              <Button variant="outline-light" size="lg">
+              </Link>
+              <Link className="btn btn-outline-light btn-lg" to="/register">
                 Sign Up
-              </Button>
+              </Link>
             </Col>
           </Row>
         </Col>
