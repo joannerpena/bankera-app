@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setAlert } from '../../actions/alert';
+import PropTypes from 'prop-types';
 import { Row, Col, Form, Jumbotron, Button } from 'react-bootstrap';
 
-const RegistrationForm = () => {
+const RegistrationForm = ({ setAlert }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -18,7 +21,7 @@ const RegistrationForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    setAlert('User Register', 'success');
   };
 
   return (
@@ -108,4 +111,8 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+RegistrationForm.prototype = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(RegistrationForm);
