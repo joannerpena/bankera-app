@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Jumbotron, Button } from 'react-bootstrap';
 
-const RegistrationForm = ({ setAlert }) => {
+const RegistrationForm = ({ setAlert, register }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -21,7 +22,7 @@ const RegistrationForm = ({ setAlert }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setAlert('User Register', 'success');
+    register({ first_name, last_name, email, username, password });
   };
 
   return (
@@ -43,7 +44,6 @@ const RegistrationForm = ({ setAlert }) => {
                   name="first_name"
                   value={first_name}
                   onChange={(e) => onChange(e)}
-                  required
                 />
               </Col>
               <Col>
@@ -53,7 +53,6 @@ const RegistrationForm = ({ setAlert }) => {
                   name="last_name"
                   value={last_name}
                   onChange={(e) => onChange(e)}
-                  required
                 />
               </Col>
             </Form.Row>
@@ -64,7 +63,6 @@ const RegistrationForm = ({ setAlert }) => {
                 name="email"
                 value={email}
                 onChange={(e) => onChange(e)}
-                required
               />
             </Form.Group>
             <Form.Group>
@@ -74,9 +72,6 @@ const RegistrationForm = ({ setAlert }) => {
                 name="username"
                 value={username}
                 onChange={(e) => onChange(e)}
-                required
-                maxLength="15"
-                minLength="5"
               />
             </Form.Group>
             <Form.Group>
@@ -86,8 +81,6 @@ const RegistrationForm = ({ setAlert }) => {
                 name="password"
                 value={password}
                 onChange={(e) => onChange(e)}
-                required
-                minLength="8"
               />
               <Form.Text>At least 8 character</Form.Text>
             </Form.Group>
@@ -113,6 +106,7 @@ const RegistrationForm = ({ setAlert }) => {
 
 RegistrationForm.prototype = {
   setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(RegistrationForm);
+export default connect(null, { setAlert, register })(RegistrationForm);

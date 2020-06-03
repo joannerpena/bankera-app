@@ -18,7 +18,7 @@ router.post(
   [
     check('first_name', 'First name is required.').not().isEmpty(),
     check('last_name', 'Last name is required.').not().isEmpty(),
-    check('user_name', 'Please introduce a username.').not().isEmpty(),
+    check('username', 'Please introduce a username.').not().isEmpty(),
     check('email', 'Please include a valid email.').normalizeEmail().isEmail(),
     check('password', 'Password must be at least 8 characters.').isLength({
       min: 8,
@@ -46,7 +46,7 @@ router.post(
       driver_license,
       license_dueDate,
       cardColor,
-      user_name,
+      username,
       password,
       email,
       phone_number,
@@ -89,7 +89,7 @@ router.post(
         driver_license,
         license_dueDate,
         cardColor,
-        user_name,
+        username,
         password,
         email,
         phone_number,
