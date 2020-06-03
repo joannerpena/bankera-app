@@ -2,7 +2,7 @@ import React from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 
 // @import Assets
-import Logo from '../assets/img/bankera-logo.svg';
+import Logo from '../../assets/img/bankera-logo.svg';
 
 const NewAccountHeader = () => {
   return (

@@ -2,9 +2,9 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 
 // @import Components
-import NewAccountHeader from '../components/new-account-header';
+import NewAccountHeader from '../components/layout/new-account-header';
 import AccountTypeSelection from '../components/account-type-selection';
-import Footer from '../components/footer';
+import Footer from '../components/layout/footer';
 
 const NewAccountSelection = () => {
   return (

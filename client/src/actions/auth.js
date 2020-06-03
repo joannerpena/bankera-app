@@ -4,6 +4,9 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT,
 } from './types';
 import { setAlert } from './alert';
 import setAuthToken from '../utils/setAuthToken';
@@ -56,6 +59,7 @@ export const register = ({
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors;
 
@@ -66,4 +70,43 @@ export const register = ({
       type: REGISTER_FAIL,
     });
   }
+};
+
+// Login User
+export const login = (username, password) => async (dispatch) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({
+    username,
+    password,
+  });
+
+  try {
+    const res = await Axios.post('/api/auth', body, config);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(loadUser());
+  } catch (err) {
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+    dispatch({
+      type: LOGIN_ERROR,
+    });
+  }
+};
+
+// Logout / Clear Profile
+export const logout = () => (dispatch) => {
+  dispatch({
+    type: LOGOUT,
+  });
 };

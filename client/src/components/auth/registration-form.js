@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 import { Row, Col, Form, Jumbotron, Button } from 'react-bootstrap';
 
-const RegistrationForm = ({ setAlert, register }) => {
+const RegistrationForm = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -24,6 +24,11 @@ const RegistrationForm = ({ setAlert, register }) => {
     e.preventDefault();
     register({ first_name, last_name, email, username, password });
   };
+
+  // Redirect if logged in
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <Jumbotron className="registration-form shadow">
@@ -107,6 +112,13 @@ const RegistrationForm = ({ setAlert, register }) => {
 RegistrationForm.prototype = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(RegistrationForm);
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(
+  RegistrationForm
+);
