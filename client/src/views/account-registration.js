@@ -30,7 +30,6 @@ const AccountRegistrationForm = ({
   history,
 }) => {
   const [formData, setFormData] = useState({
-    account_type: '',
     birth_date: '',
     address1: '',
     address2: '',

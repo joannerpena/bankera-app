@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Navbar, Nav, Button } from 'react-bootstrap';
 
 // @import Redux
@@ -13,26 +13,28 @@ import LightLogo from '../assets/img/bankera-light-logo.svg';
 const DashboardHeader = ({ auth: { isAuthenticated }, logout }) => {
   return (
     <Navbar className="dashboard-header" expand="lg">
-      <Navbar.Brand href="#home">
+      <Link to="/dashboard">
         <img
           src={LightLogo}
           className="d-inline-block align-top dashboard-logo"
           alt="Bankera Logo"
         />
-      </Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="ml-auto nav-list">
-          <Nav.Link href="#">Account</Nav.Link>
+          <Link to="/dashboard" class="nav-link">
+            Account
+          </Link>
           <Nav.Link className="ml-3" href="#">
             Savings
           </Nav.Link>
           <Nav.Link className="ml-3" href="#">
             Transfer
           </Nav.Link>
-          <Nav.Link className="ml-3" href="#">
+          <Link className="ml-3 nav-link" to="/account/settings">
             Settings
-          </Nav.Link>
+          </Link>
           <Button className="ml-3 nav-button" variant="dark" onClick={logout}>
             Log Out
           </Button>

@@ -44,6 +44,7 @@ const App = () => {
             component={AccountRegistrationForm}
           />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute exact path="/account/settings" component={Setting} />
         </Switch>
       </Router>
     </Provider>

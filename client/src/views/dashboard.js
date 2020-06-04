@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentAccount } from '../actions/account';
 import setAuthToken from '../utils/setAuthToken';
-import { loadUser } from '../actions/auth';
 
 // Components
 import DashboardHeader from '../components/dashboard-header';
