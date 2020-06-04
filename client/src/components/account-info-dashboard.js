@@ -1,15 +1,30 @@
-import React from 'react';
-import { Jumbotron, Row, Col, Button } from 'react-bootstrap';
+import React, { Fragment, useState } from 'react';
+import { Jumbotron, Row, Col, Button, Modal } from 'react-bootstrap';
+
+// @import Modal
+import ModalTransaction from './modals/ModalTransaction';
 
 const AccountWidget = ({ amount, accountNumber }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <Jumbotron className="account-widget shadow">
+      <Fragment>
+        <Modal show={show} onHide={handleClose}>
+          <ModalTransaction />
+        </Modal>
+      </Fragment>
       <Row className="widget-title d-flex justify-content-start">
         <Col className="d-flex flex-row">
           <h2 className="d-flex flex-column">
             Account Summary <span>Account number: {accountNumber}</span>
           </h2>
-          <Button variant="light">+ Add Transaction</Button>
+          <Button variant="light" onClick={handleShow}>
+            + Add Transaction
+          </Button>
         </Col>
       </Row>
       <Row className="widget-account-total">

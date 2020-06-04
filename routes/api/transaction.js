@@ -21,6 +21,7 @@ router.post(
         .not()
         .isEmpty()
         .isNumeric(),
+      check('transaction_type', 'Category is required').not().isEmpty(),
     ],
   ],
   async (req, res) => {
