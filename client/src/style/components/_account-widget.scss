@@ -9,6 +9,15 @@
     margin-bottom: 1.5em;
     margin-left: 5.7em;
 
+    h2 {
+      color: $extra-dark-color;
+      span {
+        color: $dark-color;
+        font-weight: normal;
+        font-size: 0.5em;
+      }
+    }
+
     button {
       margin-left: 1em;
       background-color: $second-color;

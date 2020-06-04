@@ -16,7 +16,7 @@ import { Redirect } from 'react-router-dom';
 
 const Dashboard = ({
   getCurrentAccount,
-  auth: { isAuthenticated },
+  auth: { isAuthenticated, user },
   account: { hasAccount, account },
 }) => {
   if (localStorage.token) {
@@ -33,6 +33,7 @@ const Dashboard = ({
 
   // @props account info
   const amount = account != null ? account.amount_in_account : 0;
+  const accountNumber = user != null ? user.account_number : '0000000000';
 
   return (
     <div className="dashboard">
@@ -40,7 +41,7 @@ const Dashboard = ({
         <DashboardHeader />
       </Container>
       <Container className="page-margin" fluid>
-        <AccountWidget amount={amount} />
+        <AccountWidget amount={amount} accountNumber={accountNumber} />
         <TransactionList />
       </Container>
       <Container className="no-padding" fluid>

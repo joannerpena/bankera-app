@@ -1,12 +1,14 @@
 import React from 'react';
 import { Jumbotron, Row, Col, Button } from 'react-bootstrap';
 
-const AccountWidget = ({ amount }) => {
+const AccountWidget = ({ amount, accountNumber }) => {
   return (
     <Jumbotron className="account-widget shadow">
       <Row className="widget-title d-flex justify-content-start">
         <Col className="d-flex flex-row">
-          <h2>Account Summary</h2>
+          <h2 className="d-flex flex-column">
+            Account Summary <span>Account number: {accountNumber}</span>
+          </h2>
           <Button variant="light">+ Add Transaction</Button>
         </Col>
       </Row>

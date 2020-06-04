@@ -40,7 +40,7 @@ export const registerAccount = (formData, history, edit = false) => async (
       history.push('/dashboard');
     }
 
-    dispatch(setAlert(edit ? 'Account Created' : 'Account Updated', 'success'));
+    dispatch(setAlert(edit ? 'Account Updated' : 'Account Created', 'success'));
   } catch (error) {
     const errors = error.response.data.errors;
 

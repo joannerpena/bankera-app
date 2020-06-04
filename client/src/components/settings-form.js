@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 
 // @import Redux
 import { connect } from 'react-redux';
 import { registerAccount, getCurrentAccount } from '../actions/account';
+
 const SettingsForm = ({
   account: { account, loading },
   registerAccount,
@@ -28,27 +29,33 @@ const SettingsForm = ({
   });
 
   useEffect(() => {
-    getCurrentAccount();
-
-    setFormData({
-      birth_date: loading || !account.birth_date ? '' : account.birth_date,
-      address1: loading || !account.address1 ? '' : account.address1,
-      address2: loading || !account.address2 ? '' : account.address2,
-      city: loading || !account.city ? '' : account.city,
-      state: loading || !account.state ? '' : account.state,
-      zipcode: loading || !account.zipcode ? '' : account.zipcode,
-      us_citizenship:
-        loading || !account.us_citizenship ? '' : account.us_citizenship,
-      ssn: loading || !account.ssn ? '' : account.ssn,
-      driver_license:
-        loading || !account.driver_license ? '' : account.driver_license,
-      license_dueDate:
-        loading || !account.license_dueDate ? '' : account.license_dueDate,
-      phone_number:
-        loading || !account.phone_number ? '' : account.phone_number,
-      phone_optional:
-        loading || !account.phone_optional ? '' : account.phone_optional,
-    });
+    if (account === null) {
+      return <Redirect to="/dashboard" />;
+    } else {
+      getCurrentAccount();
+      setFormData({
+        birth_date:
+          loading || (!account.birth_date && account.birth_date)
+            ? ''
+            : account.birth_date,
+        address1: loading || !account.address1 ? '' : account.address1,
+        address2: loading || !account.address2 ? '' : account.address2,
+        city: loading || !account.city ? '' : account.city,
+        state: loading || !account.state ? '' : account.state,
+        zipcode: loading || !account.zipcode ? '' : account.zipcode,
+        us_citizenship:
+          loading || !account.us_citizenship ? '' : account.us_citizenship,
+        ssn: loading || !account.ssn ? '' : account.ssn,
+        driver_license:
+          loading || !account.driver_license ? '' : account.driver_license,
+        license_dueDate:
+          loading || !account.license_dueDate ? '' : account.license_dueDate,
+        phone_number:
+          loading || !account.phone_number ? '' : account.phone_number,
+        phone_optional:
+          loading || !account.phone_optional ? '' : account.phone_optional,
+      });
+    }
   }, [loading]);
 
   const {
@@ -71,7 +78,7 @@ const SettingsForm = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    registerAccount(formData, history);
+    registerAccount(formData, history, true);
   };
 
   return (
@@ -211,6 +218,9 @@ const SettingsForm = ({
                 />
               </Form.Group>
             </Form.Row>
+            <Row>
+              <Col></Col>
+            </Row>
             <Form.Row>
               <Col className="settings-submit d-flex justify-content-center">
                 <Button variant="dark" type="submit" size="lg">
