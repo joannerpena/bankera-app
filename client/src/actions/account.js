@@ -1,5 +1,11 @@
 import Axios from 'axios';
-import { GET_ACCOUNT, CREATE_ACCOUNT, ACCOUNT_ERROR } from './types';
+import {
+  GET_ACCOUNT,
+  CREATE_ACCOUNT,
+  ACCOUNT_ERROR,
+  CLEAR_ACCOUNT,
+  DELETED_ACCOUNT,
+} from './types';
 import { setAlert } from './alert';
 
 // Get Current Profile
@@ -54,5 +60,33 @@ export const registerAccount = (formData, history, edit = false) => async (
         status: error.response.status,
       },
     });
+  }
+};
+
+// Delete Account and User
+export const deleteAccount = () => async (dispatch) => {
+  if (
+    window.confirm(
+      'Are you sure you want to delete your account and user? This can NOT be undone'
+    )
+  ) {
+    try {
+      const res = await Axios.delete('/api/account');
+      dispatch({
+        type: CLEAR_ACCOUNT,
+      });
+      dispatch({
+        type: DELETED_ACCOUNT,
+      });
+      dispatch(setAlert('Account and User were deleted'));
+    } catch (error) {
+      dispatch({
+        type: ACCOUNT_ERROR,
+        payload: {
+          msg: error.response.statusText,
+          status: error.response.status,
+        },
+      });
+    }
   }
 };

@@ -10,6 +10,13 @@
     background-color: $second-color;
     padding: 3em 7em;
 
+    .delete-account-button {
+      margin-top: 1em;
+      button {
+        font-weight: bold;
+      }
+    }
+
     .settings-form {
       background-color: $light-color;
       padding: 4em 5em;

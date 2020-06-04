@@ -1,4 +1,5 @@
 import {
+  DELETED_ACCOUNT,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   USER_LOADED,
@@ -40,6 +41,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_ERROR:
     case LOGOUT:
+    case DELETED_ACCOUNT:
       localStorage.removeItem('token');
       return {
         ...state,

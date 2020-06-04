@@ -5,10 +5,15 @@ import { withRouter, Redirect } from 'react-router-dom';
 
 // @import Redux
 import { connect } from 'react-redux';
-import { registerAccount, getCurrentAccount } from '../actions/account';
+import {
+  registerAccount,
+  getCurrentAccount,
+  deleteAccount,
+} from '../actions/account';
 
 const SettingsForm = ({
   account: { account, loading },
+  deleteAccount,
   registerAccount,
   getCurrentAccount,
   history,
@@ -218,9 +223,6 @@ const SettingsForm = ({
                 />
               </Form.Group>
             </Form.Row>
-            <Row>
-              <Col></Col>
-            </Row>
             <Form.Row>
               <Col className="settings-submit d-flex justify-content-center">
                 <Button variant="dark" type="submit" size="lg">
@@ -229,6 +231,13 @@ const SettingsForm = ({
               </Col>
             </Form.Row>
           </Form>
+          <Row>
+            <Col className="text-center delete-account-button">
+              <Button variant="danger" onClick={() => deleteAccount()}>
+                Delete My Account
+              </Button>
+            </Col>
+          </Row>
         </Container>
       </Jumbotron>
     </Container>
@@ -238,6 +247,7 @@ const SettingsForm = ({
 SettingsForm.propTypes = {
   getCurrentAccount: PropTypes.func.isRequired,
   registerAccount: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   account: PropTypes.object.isRequired,
 };
 
@@ -245,6 +255,8 @@ const mapStateToProps = (state) => ({
   account: state.account,
 });
 
-export default connect(mapStateToProps, { getCurrentAccount, registerAccount })(
-  withRouter(SettingsForm)
-);
+export default connect(mapStateToProps, {
+  getCurrentAccount,
+  registerAccount,
+  deleteAccount,
+})(withRouter(SettingsForm));
