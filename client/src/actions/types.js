@@ -7,3 +7,7 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const LOGOUT = 'LOGOUT';
+export const GET_ACCOUNT = 'GET_ACCOUNT';
+export const CREATE_ACCOUNT = 'CREATE_ACCOUNT';
+export const ACCOUNT_ERROR = 'ACCOUNT_ERROR';
+export const CLEAR_ACCOUNT = 'CLEAR_ACCOUNT';

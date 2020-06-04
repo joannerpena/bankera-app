@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const AccountSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'user',
   },
   account_type: {
     type: String,
-    required: true,
+    default: 'personal',
   },
   birth_date: {
     type: Date,
@@ -48,7 +48,7 @@ const AccountSchema = new mongoose.Schema({
   },
   cardColor: {
     type: Number,
-    required: true,
+    default: 1,
   },
   phone_number: {
     type: String,

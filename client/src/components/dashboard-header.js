@@ -11,10 +11,6 @@ import { logout } from '../actions/auth';
 import LightLogo from '../assets/img/bankera-light-logo.svg';
 
 const DashboardHeader = ({ auth: { isAuthenticated }, logout }) => {
-  if (!isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
   return (
     <Navbar className="dashboard-header" expand="lg">
       <Navbar.Brand href="#home">

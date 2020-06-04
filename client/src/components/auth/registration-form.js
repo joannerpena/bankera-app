@@ -109,7 +109,7 @@ const RegistrationForm = ({ setAlert, register, isAuthenticated }) => {
   );
 };
 
-RegistrationForm.prototype = {
+RegistrationForm.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,

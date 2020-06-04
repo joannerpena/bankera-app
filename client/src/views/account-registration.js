@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Container,
   Jumbotron,
@@ -8,6 +8,13 @@ import {
   Image,
   Button,
 } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+
+// @import Redux
+import { connect } from 'react-redux';
+import { setAlert } from '../actions/alert';
+import { registerAccount, getCurrentAccount } from '../actions/account';
 
 // @import Assets
 import Logo from '../assets/img/bankera-logo.svg';
@@ -15,7 +22,56 @@ import CardGray from '../assets/img/card-gray.svg';
 import CardRed from '../assets/img/card-red.svg';
 import CardLight from '../assets/img/card-light.svg';
 import TermOfUse from '../assets/files/term-of-use.pdf';
-const AccountRegistrationForm = () => {
+const AccountRegistrationForm = ({
+  isAuthenticated,
+  hasAccount,
+  setAlert,
+  registerAccount,
+  getCurrentAccount,
+}) => {
+  const [formData, setFormData] = useState({
+    account_type: '',
+    birth_date: '',
+    address1: '',
+    address2: '',
+    city: '',
+    state: '',
+    zipcode: '',
+    us_citizenship: '',
+    ssn: '',
+    driver_license: '',
+    license_dueDate: '',
+    phone_number: '',
+    phone_optional: '',
+  });
+
+  const {
+    birth_date,
+    address1,
+    address2,
+    city,
+    state,
+    zipcode,
+    us_citizenship,
+    ssn,
+    driver_license,
+    license_dueDate,
+    phone_number,
+    phone_optional,
+  } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  if (isAuthenticated && hasAccount) {
+    return <Redirect to="/dashboard" />;
+  }
+
   return (
     <Container className="account-registration no-padding" fluid>
       <Jumbotron className="account-form shadow">
@@ -28,37 +84,77 @@ const AccountRegistrationForm = () => {
           </Col>
         </Row>
         <Container fluid>
-          <Form>
+          <Form onSubmit={(e) => onSubmit(e)}>
             <Form.Group controlId="formDateBirth">
               <Form.Label>Date of Birth</Form.Label>
-              <Form.Control type="date" placeholder="mm/dd/yyyy" />
+              <Form.Control
+                type="date"
+                placeholder="mm/dd/yyyy"
+                name="birth_date"
+                value={birth_date}
+                onChange={(e) => onChange(e)}
+              />
             </Form.Group>
             <Form.Group controlId="formAddress1">
               <Form.Label>Address #1</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                name="address1"
+                value={address1}
+                onChange={(e) => onChange(e)}
+              />
             </Form.Group>
             <Form.Group controlId="formAddress2">
               <Form.Label>Address #2</Form.Label>
-              <Form.Control type="text" />
+              <Form.Control
+                type="text"
+                name="address2"
+                value={address2}
+                onChange={(e) => onChange(e)}
+              />
             </Form.Group>
             <Form.Row>
               <Form.Group as={Col} controlId="formCity">
                 <Form.Label>City</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  type="text"
+                  name="city"
+                  value={city}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formState">
                 <Form.Label>State</Form.Label>
-                <Form.Control type="text" maxLength="2" minLength="2" />
+                <Form.Control
+                  type="text"
+                  maxLength="2"
+                  minLength="2"
+                  name="state"
+                  value={state}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formZipcode">
                 <Form.Label>Zipcode</Form.Label>
-                <Form.Control type="text" maxLength="7" minLength="7" />
+                <Form.Control
+                  type="text"
+                  maxLength="7"
+                  minLength="7"
+                  name="zipcode"
+                  value={zipcode}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formCitizen.ControlSelect1">
                 <Form.Label>Are you a US Citizen?</Form.Label>
-                <Form.Control as="select">
-                  <option value="true">Yes</option>
-                  <option value="false" selected>
+                <Form.Control
+                  as="select"
+                  name="us_citizenship"
+                  value={us_citizenship}
+                  onChange={(e) => onChange(e)}
+                >
+                  <option value={true}>Yes</option>
+                  <option value={false} selected>
                     No
                   </option>
                 </Form.Control>
@@ -67,15 +163,33 @@ const AccountRegistrationForm = () => {
             <Form.Row>
               <Form.Group as={Col} controlId="formSSN">
                 <Form.Label>SSN - Last 4 Digits</Form.Label>
-                <Form.Control type="text" minLength="4" maxLength="4" />
+                <Form.Control
+                  type="text"
+                  minLength="4"
+                  maxLength="4"
+                  name="ssn"
+                  value={ssn}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formDriverLicense">
                 <Form.Label>Driver's License</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control
+                  type="text"
+                  name="driver_license"
+                  value={driver_license}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formLicenseDueDate">
                 <Form.Label>Due Date</Form.Label>
-                <Form.Control type="date" placeholder="mm/dd/yyyy" />
+                <Form.Control
+                  type="date"
+                  placeholder="mm/dd/yyyy"
+                  name="license_dueDate"
+                  value={license_dueDate}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
             </Form.Row>
             <div className="card-select-title">
@@ -91,9 +205,8 @@ const AccountRegistrationForm = () => {
                 <Form.Check
                   className="text-center"
                   type="radio"
-                  value="1"
-                  name="card-selection"
-                  checked
+                  name="cardColor"
+                  defaultChecked
                 />
               </Form.Group>
               <Form.Group
@@ -105,8 +218,7 @@ const AccountRegistrationForm = () => {
                 <Form.Check
                   className="text-center"
                   type="radio"
-                  value="2"
-                  name="card-selection"
+                  name="cardColor"
                 />
               </Form.Group>
               <Form.Group
@@ -118,19 +230,28 @@ const AccountRegistrationForm = () => {
                 <Form.Check
                   className="text-center"
                   type="radio"
-                  value="3"
-                  name="card-selection"
+                  name="cardColor"
                 />
               </Form.Group>
             </Form.Row>
             <Form.Row>
               <Form.Group as={Col} controlId="formPhoneNumber">
                 <Form.Label>Phone Number</Form.Label>
-                <Form.Control type="tel" />
+                <Form.Control
+                  type="tel"
+                  name="phone_number"
+                  value={phone_number}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
               <Form.Group as={Col} controlId="formPhoneAlt">
                 <Form.Label>Optional Phone</Form.Label>
-                <Form.Control type="tel" />
+                <Form.Control
+                  type="tel"
+                  name="phone_optional"
+                  value={phone_optional}
+                  onChange={(e) => onChange(e)}
+                />
               </Form.Group>
             </Form.Row>
             <Form.Row>
@@ -158,4 +279,21 @@ const AccountRegistrationForm = () => {
   );
 };
 
-export default AccountRegistrationForm;
+AccountRegistrationForm.propTypes = {
+  hasAccount: PropTypes.bool,
+  isAuthenticated: PropTypes.bool,
+  setAlert: PropTypes.func.isRequired,
+  registerAccount: PropTypes.func.isRequired,
+  getCurrentAccount: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  hasAccount: state.account.hasAccount,
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, {
+  registerAccount,
+  getCurrentAccount,
+  setAlert,
+})(AccountRegistrationForm);

@@ -6,7 +6,7 @@ const dateNow = new Date();
 const TransactionSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'users',
+    ref: 'user',
   },
   transaction_title: {
     type: String,

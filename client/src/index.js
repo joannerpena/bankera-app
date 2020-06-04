@@ -23,10 +23,7 @@ import NewAccountSelection from './views/new-account-selection';
 import AccountRegistrationForm from './views/account-registration';
 import Setting from './views/settings';
 import Alert from './components/layout/alert';
-
-if (localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+import PrivateRoute from './components/routing/private-route';
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
@@ -41,7 +38,12 @@ const App = () => {
           <Route exact path="/personal" component={PersonalPage} />
           <Route exact path="/login" component={LogIn} />
           <Route exact path="/register" component={RegisterPage} />
-          <Route exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute
+            exact
+            path="/account/register"
+            component={AccountRegistrationForm}
+          />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
     </Provider>
