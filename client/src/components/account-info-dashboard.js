@@ -21,7 +21,7 @@ const AccountWidget = ({ amount }) => {
         </Col>
         <Col lg={2}>
           <p className="total-type">Total Earnings</p>
-          <p className="widget-amount">$</p>
+          <p className="widget-amount">$0</p>
         </Col>
         <Col lg={2}>
           <p className="total-type">Total Spending</p>

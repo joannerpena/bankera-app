@@ -57,6 +57,10 @@ const AccountSchema = new mongoose.Schema({
   phone_optional: {
     type: String,
   },
+  amount_in_account: {
+    type: Number,
+    default: 0,
+  },
 });
 
 module.exports = Account = mongoose.model('account', AccountSchema);

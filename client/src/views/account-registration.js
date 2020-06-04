@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 // @import Redux
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ const AccountRegistrationForm = ({
   hasAccount,
   setAlert,
   registerAccount,
-  getCurrentAccount,
+  history,
 }) => {
   const [formData, setFormData] = useState({
     account_type: '',
@@ -65,7 +65,7 @@ const AccountRegistrationForm = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    registerAccount(formData, history);
   };
 
   if (isAuthenticated && hasAccount) {
@@ -153,10 +153,10 @@ const AccountRegistrationForm = ({
                   value={us_citizenship}
                   onChange={(e) => onChange(e)}
                 >
-                  <option value={true}>Yes</option>
-                  <option value={false} selected>
+                  <option value={false} defaultValue>
                     No
                   </option>
+                  <option value={true}>Yes</option>
                 </Form.Control>
               </Form.Group>
             </Form.Row>
@@ -296,4 +296,4 @@ export default connect(mapStateToProps, {
   registerAccount,
   getCurrentAccount,
   setAlert,
-})(AccountRegistrationForm);
+})(withRouter(AccountRegistrationForm));
