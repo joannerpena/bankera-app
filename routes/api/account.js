@@ -48,13 +48,13 @@ router.post(
       check('zipcode', 'Zipcode is required.')
         .not()
         .isEmpty()
-        .isDecimal()
+        .isNumeric()
         .isLength({ min: 5, max: 5 }),
       check('ssn', 'SSN is required.').not().isEmpty().isDecimal(),
       check('phone_number', 'Phone Number is required.')
         .not()
         .isEmpty()
-        .isDecimal()
+        .isNumeric()
         .isLength({ min: 10 }),
     ],
   ],

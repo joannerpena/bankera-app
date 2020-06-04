@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Table } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
-const TransactionList = () => {
+// @import Redux
+import { connect } from 'react-redux';
+import { getTransactions } from '../actions/transactions';
+
+// @import Component
+import TransactionItem from './transaction-item';
+const TransactionList = ({
+  getTransactions,
+  transaction: { transactions },
+}) => {
+  useEffect(() => {
+    getTransactions();
+  }, [getTransactions]);
+
   return (
     <div>
       <Row className="transactions-list">
@@ -20,24 +34,9 @@ const TransactionList = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>02/05/2020</td>
-              <td>Starbucks Coffee</td>
-              <td>CoffeeBreak</td>
-              <td>$6.20</td>
-            </tr>
-            <tr>
-              <td>02/05/2020</td>
-              <td>Uber Drive</td>
-              <td>Commute</td>
-              <td>$30.23</td>
-            </tr>
-            <tr>
-              <td>02/05/2020</td>
-              <td>Panera Bread</td>
-              <td>Food</td>
-              <td>$50.24</td>
-            </tr>
+            {transactions.map((transaction) => (
+              <TransactionItem transaction={transaction} />
+            ))}
           </tbody>
         </Table>
       </Row>
@@ -45,4 +44,13 @@ const TransactionList = () => {
   );
 };
 
-export default TransactionList;
+TransactionList.propTypes = {
+  getTransactions: PropTypes.func.isRequired,
+  transactions: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  transaction: state.transaction,
+});
+
+export default connect(mapStateToProps, { getTransactions })(TransactionList);
