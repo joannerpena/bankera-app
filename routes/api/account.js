@@ -3,8 +3,10 @@ const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 const router = express.Router();
 
+// @import Models
 const Account = require('../../models/Account');
 const User = require('../../models/User');
+const Transaction = require('../../models/Transaction');
 
 // @route   GET api/account/me
 // @desc    Get User Account
@@ -126,7 +128,9 @@ router.post(
 // @access  Private
 router.delete('/', auth, async (req, res) => {
   try {
-    // @todo - remove users transaction
+    // Remove User Transactions
+    await Transaction.deleteMany({ user: req.user.id });
+
     // Remove Account and User
     await Account.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
