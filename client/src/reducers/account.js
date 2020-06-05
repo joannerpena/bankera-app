@@ -3,6 +3,7 @@ import {
   ACCOUNT_ERROR,
   CREATE_ACCOUNT,
   CLEAR_ACCOUNT,
+  ADDED_AMOUNT,
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,7 @@ export default function (state = initialState, action) {
   switch (type) {
     case GET_ACCOUNT:
     case CREATE_ACCOUNT:
+    case ADDED_AMOUNT:
       return {
         ...state,
         account: payload,

@@ -142,4 +142,27 @@ router.delete('/', auth, async (req, res) => {
   }
 });
 
+// @route   PUT api/account/
+// @desc    Update User Account
+// @access  Private
+router.put('/', auth, async (req, res) => {
+  try {
+    let account = await Account.findOne({ user: req.user.id });
+
+    if (account) {
+      // Update account
+      account = await Account.findOneAndUpdate(
+        { user: req.user.id },
+        { $set: { amount_in_account: req.body.amount } },
+        { new: true }
+      );
+
+      return res.json(account);
+    }
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 module.exports = router;

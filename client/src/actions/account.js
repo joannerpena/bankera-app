@@ -5,6 +5,7 @@ import {
   ACCOUNT_ERROR,
   CLEAR_ACCOUNT,
   DELETED_ACCOUNT,
+  ADDED_AMOUNT,
 } from './types';
 import { setAlert } from './alert';
 
@@ -88,5 +89,35 @@ export const deleteAccount = () => async (dispatch) => {
         },
       });
     }
+  }
+};
+
+// Add Amount to Account
+export const addAmountAccount = (amount) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await Axios.put('/api/account', amount, config);
+
+    dispatch({
+      type: ADDED_AMOUNT,
+      payload: res.data,
+    });
+    dispatch({
+      type: GET_ACCOUNT,
+      payload: res.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: ACCOUNT_ERROR,
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
+    });
   }
 };

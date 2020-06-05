@@ -5,8 +5,15 @@ import PropTypes from 'prop-types';
 // @import Redux
 import { connect } from 'react-redux';
 import { addTransaction } from '../../actions/transactions';
+import { addAmountAccount } from '../../actions/account';
+import { setAlert } from '../../actions/alert';
 
-const ModalTransaction = ({ addTransaction }) => {
+const ModalTransaction = ({
+  addTransaction,
+  addAmountAccount,
+  account: { account },
+  setAlert,
+}) => {
   const [formData, setFormData] = useState({
     transaction_title: '',
     transaction_amount: '',
@@ -20,7 +27,39 @@ const ModalTransaction = ({ addTransaction }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addTransaction(formData);
+    if (
+      parseInt(formData.transaction_amount) >
+        parseInt(account.amount_in_account) &&
+      formData.transaction_type != 'Deposit'
+    ) {
+      setAlert('You dont have enough balance', 'danger');
+    } else {
+      addTransaction(formData);
+      if (formData.transaction_type === 'Deposit') {
+        const newAmount =
+          parseInt(formData.transaction_amount) +
+          parseInt(account.amount_in_account);
+
+        console.log(newAmount);
+        const sendAmount = {
+          amount: newAmount,
+        };
+
+        console.log(sendAmount);
+        addAmountAccount(sendAmount);
+      } else {
+        const newAmount =
+          parseInt(account.amount_in_account) -
+          parseInt(formData.transaction_amount);
+        console.log(newAmount);
+        const sendAmount = {
+          amount: newAmount,
+        };
+
+        console.log(sendAmount);
+        addAmountAccount(sendAmount);
+      }
+    }
   };
 
   return (
@@ -80,6 +119,17 @@ const ModalTransaction = ({ addTransaction }) => {
 
 ModalTransaction.propTypes = {
   addTransaction: PropTypes.func.isRequired,
+  addAmountAccount: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+  account: PropTypes.object.isRequired,
 };
 
-export default connect(null, { addTransaction })(ModalTransaction);
+const mapStateToProps = (state) => ({
+  account: state.account,
+});
+
+export default connect(mapStateToProps, {
+  addTransaction,
+  addAmountAccount,
+  setAlert,
+})(ModalTransaction);

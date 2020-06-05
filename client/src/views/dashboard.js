@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 // @import Redux
 import { connect } from 'react-redux';
 import { getCurrentAccount } from '../actions/account';
+import { getTransactions } from '../actions/transactions';
 import setAuthToken from '../utils/setAuthToken';
 
 // Components
@@ -18,6 +19,7 @@ const Dashboard = ({
   getCurrentAccount,
   auth: { isAuthenticated, user },
   account: { hasAccount, account },
+  transactions: { transactions },
 }) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -25,11 +27,18 @@ const Dashboard = ({
 
   useEffect(() => {
     getCurrentAccount();
+    getTransactions();
   }, []);
 
   if (!hasAccount && isAuthenticated) {
     return <Redirect to="/account/register" />;
   }
+
+  let amountSpent = 0;
+
+  transactions.map((transaction) => {
+    amountSpent = amountSpent + transaction.transaction_amount;
+  });
 
   // @props account info
   const amount = account != null ? account.amount_in_account : 0;
@@ -41,7 +50,11 @@ const Dashboard = ({
         <DashboardHeader />
       </Container>
       <Container className="page-margin" fluid>
-        <AccountWidget amount={amount} accountNumber={accountNumber} />
+        <AccountWidget
+          amount={amount}
+          amountSpent={amountSpent}
+          accountNumber={accountNumber}
+        />
         <TransactionList />
       </Container>
       <Container className="no-padding" fluid>
@@ -52,14 +65,19 @@ const Dashboard = ({
 };
 
 Dashboard.propTypes = {
+  getTransactions: PropTypes.func.isRequired,
   getCurrentAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   account: PropTypes.object.isRequired,
+  transactions: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
   account: state.account,
+  transactions: state.transaction,
 });
 
-export default connect(mapStateToProps, { getCurrentAccount })(Dashboard);
+export default connect(mapStateToProps, { getCurrentAccount, getTransactions })(
+  Dashboard
+);
