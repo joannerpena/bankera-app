@@ -1,0 +1,19 @@
+// Dashboard
+
+// @imports
+@import '../components/dashboard-header';
+@import '../components/account-widget';
+@import '../components/transaction-list';
+
+// Rules
+.dashboard {
+  height: 100%;
+  background-color: $second-color;
+
+  footer {
+    background-color: $extra-dark-color;
+    padding: 1em;
+    margin-top: 8.9em;
+    color: $second-color;
+  }
+}

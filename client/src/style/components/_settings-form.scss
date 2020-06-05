@@ -1,0 +1,55 @@
+// Settings Form
+.settings-page {
+  footer {
+    background-color: $extra-dark-color;
+    padding: 1em;
+    color: $second-color;
+  }
+
+  .settings-update {
+    background-color: $second-color;
+    padding: 3em 7em;
+
+    .delete-account-button {
+      margin-top: 1em;
+      button {
+        font-weight: bold;
+      }
+    }
+
+    .settings-form {
+      background-color: $light-color;
+      padding: 4em 5em;
+
+      label,
+      h2,
+      h5 {
+        color: $dark-color;
+      }
+
+      h2 {
+        font-size: 4em;
+        margin-bottom: 0.5em;
+      }
+
+      img {
+        margin-bottom: 0.5em;
+      }
+      a {
+        color: $dark-color;
+        text-decoration: underline;
+        margin-bottom: 2em;
+      }
+
+      .settings-submit {
+        margin-top: 2em;
+
+        button {
+          padding: 0.5em 3.5em;
+          font-weight: bold;
+          background-color: $dark-color;
+        }
+      }
+    }
+  }
+}

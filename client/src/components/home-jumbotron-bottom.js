@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Jumbotron, Button, Image } from 'react-bootstrap';
 
 // @import Assets
@@ -14,9 +15,9 @@ const HomeJumbotronBottom = () => {
             When you’re on top of your money, life is good. We help you
             effortlessly manage your finances in one place.
           </p>
-          <Button variant="dark" size="lg">
-            Learn more
-          </Button>
+          <Link className="btn btn-dark btn-lg" to="/personal">
+            Learn More
+          </Link>
         </Col>
         <Col
           className="round-image-container d-flex justify-content-center"

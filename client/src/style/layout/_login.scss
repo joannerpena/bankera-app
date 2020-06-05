@@ -1,0 +1,71 @@
+// Login Page
+
+// @imports
+
+.login-page {
+  img {
+    width: 100%;
+  }
+
+  small {
+    color: $dark-color;
+  }
+
+  .left-banner {
+    padding: 24.5em 7em 24em 7em;
+    background-color: $dark-color;
+  }
+
+  .right-banner {
+    background-color: $second-color;
+    // padding: 10em 12em 10em 12em;
+
+    .login-form {
+      background-color: $light-color;
+      margin: 11em 11em 9em 11em;
+      padding: 3em;
+
+      p {
+        color: $dark-color;
+        margin-bottom: 0;
+      }
+
+      h3 {
+        font-size: 3em;
+        font-weight: bold;
+        padding-right: 2em;
+        margin-bottom: 0.5em;
+        color: $dark-color;
+      }
+
+      label {
+        font-size: 1.3em;
+        font-weight: 500;
+        color: $dark-color;
+      }
+
+      input {
+        border: 1px solid $dark-color;
+      }
+
+      button {
+        background-color: $dark-color;
+        color: $light-color;
+        font-weight: bold;
+        font-size: 2em;
+        padding: 0.2em;
+      }
+
+      .form-control {
+        margin-bottom: 2em;
+      }
+
+      .createAccount-link {
+        margin-top: 0.2em;
+        font-size: 1.2em;
+        text-decoration: underline;
+        color: $dark-color;
+      }
+    }
+  }
+}

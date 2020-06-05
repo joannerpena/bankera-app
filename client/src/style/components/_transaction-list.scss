@@ -1,0 +1,16 @@
+// Transaction List
+.transactions-list {
+  h3 {
+    font-weight: 500;
+    font-size: 2em;
+    color: $extra-dark-color;
+    margin-left: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.transaction-table {
+  border-radius: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+}

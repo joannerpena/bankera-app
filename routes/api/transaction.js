@@ -20,7 +20,8 @@ router.post(
       check('transaction_amount', 'Amount is required.')
         .not()
         .isEmpty()
-        .isDecimal(),
+        .isNumeric(),
+      check('transaction_type', 'Category is required').not().isEmpty(),
     ],
   ],
   async (req, res) => {

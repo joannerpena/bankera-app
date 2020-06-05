@@ -1,0 +1,20 @@
+// Dashboard Header
+.dashboard-header{
+    background-color: $extra-dark-color;
+    padding: 1em;
+
+    button{
+        font-weight: bold;
+        background-color: $light-color;
+        color: $first-color;
+    }
+    
+    .dashboard-logo{
+        width: 50%;
+    }
+
+    .nav-link{
+        font-weight: bold;
+        color: $light-color!important;
+    }
+}

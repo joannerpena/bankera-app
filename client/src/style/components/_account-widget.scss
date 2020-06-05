@@ -1,0 +1,46 @@
+// Account Widget
+.account-widget {
+  margin-top: 2em;
+  margin-bottom: 3em;
+  background-color: $light-color;
+  border-radius: 1em;
+
+  .widget-title {
+    margin-bottom: 1.5em;
+    margin-left: 5.7em;
+
+    h2 {
+      color: $extra-dark-color;
+      span {
+        color: $dark-color;
+        font-weight: normal;
+        font-size: 0.5em;
+      }
+    }
+
+    button {
+      margin-left: 1em;
+      background-color: $second-color;
+      color: $first-color;
+      font-weight: 500;
+    }
+  }
+
+  .widget-account-total {
+    div {
+      margin-left: 7em;
+    }
+
+    .total-type {
+      font-weight: 500;
+      color: $dark-color;
+      text-transform: uppercase;
+      margin-bottom: 0.3em;
+    }
+
+    .widget-amount {
+      color: $extra-dark-color;
+      font-size: 2em;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+// Registration Form
+.registration-form {
+  background-color: $light-color;
+  margin: 4em 5em;
+  padding: 3em;
+
+  p {
+    color: $dark-color;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 3em;
+    font-weight: bold;
+    padding-right: 2em;
+    margin-bottom: 0.5em;
+    color: $dark-color;
+  }
+
+  label {
+    font-size: 1.3em;
+    font-weight: 500;
+    color: $dark-color;
+  }
+
+  input {
+    border: 1px solid $dark-color;
+  }
+
+  button {
+    background-color: $dark-color;
+    color: $light-color;
+    font-weight: bold;
+    font-size: 2em;
+    padding: 0.2em;
+  }
+
+  .form-group,
+  .form-row {
+    margin-bottom: 2em;
+  }
+
+  .login-link {
+    margin-top: 0.2em;
+    font-size: 1.2em;
+    text-decoration: underline;
+    color: $dark-color;
+  }
+}
