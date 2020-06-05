@@ -35,9 +35,29 @@ const Dashboard = ({
   }
 
   let amountSpent = 0;
+  let netWorth = 0;
+  let totalEarnings = 0;
 
   transactions.map((transaction) => {
-    amountSpent = amountSpent + transaction.transaction_amount;
+    if (transaction.transaction_type != 'Deposit') {
+      amountSpent = amountSpent + transaction.transaction_amount;
+    }
+  });
+
+  transactions.map((transaction) => {
+    if (transaction.transaction_type === 'Deposit') {
+      netWorth = netWorth + transaction.transaction_amount;
+    }
+  });
+
+  transactions.map((transaction) => {
+    if (
+      transaction.transaction_type === 'Deposit' &&
+      (transaction.transaction_title === 'Paycheck' ||
+        transaction.transaction_title === 'paycheck')
+    ) {
+      totalEarnings = totalEarnings + transaction.transaction_amount;
+    }
   });
 
   // @props account info
@@ -54,6 +74,8 @@ const Dashboard = ({
           amount={amount}
           amountSpent={amountSpent}
           accountNumber={accountNumber}
+          netWorth={netWorth}
+          totalEarnings={totalEarnings}
         />
         <TransactionList />
       </Container>

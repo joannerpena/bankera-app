@@ -4,7 +4,13 @@ import { Jumbotron, Row, Col, Button, Modal } from 'react-bootstrap';
 // @import Modal
 import ModalTransaction from './modals/ModalTransaction';
 
-const AccountWidget = ({ amount, accountNumber, amountSpent }) => {
+const AccountWidget = ({
+  amount,
+  accountNumber,
+  amountSpent,
+  netWorth,
+  totalEarnings,
+}) => {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -34,11 +40,11 @@ const AccountWidget = ({ amount, accountNumber, amountSpent }) => {
         </Col>
         <Col lg={2}>
           <p className="total-type">Total Net Worth</p>
-          <p className="widget-amount">$0</p>
+          <p className="widget-amount">${netWorth}</p>
         </Col>
         <Col lg={2}>
           <p className="total-type">Total Earnings</p>
-          <p className="widget-amount">$0</p>
+          <p className="widget-amount">${totalEarnings}</p>
         </Col>
         <Col lg={2}>
           <p className="total-type">Total Spending</p>

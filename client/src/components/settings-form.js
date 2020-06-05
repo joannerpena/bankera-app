@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Jumbotron, Row, Col, Form, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { withRouter, Redirect } from 'react-router-dom';
+import Moment from 'react-moment';
 
 // @import Redux
 import { connect } from 'react-redux';
